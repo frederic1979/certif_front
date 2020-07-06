@@ -1,0 +1,54 @@
+
+<div id="jour">
+      <h2 id="title">{{restaurant.name}}</h2>
+
+
+
+  <h3>COMMANDE</h3>
+
+      <div id="buttonRight"   [routerLink]="['../',tomorowDate]" *ngIf="dateUrl!==tomorowDate" >
+        <button>Retour</button></div>
+
+</div>
+
+
+<!-- Bloc jour-->
+<section class="liste_commandes">
+
+  <h4 class="day">{{day}} {{displayNumberDay(ndateUrl)}} {{displayMonth(ndateUrl)}} </h4>
+  <div id="image"><img src="../../assets/meule.jpg"></div>
+
+
+  <!-- Bloc quantité-->
+  <div id="quantityBloc">
+
+    <!--boutton moins-->
+    <button id="circleButtonMoins" (click)="updateCommand(-  1)">-</button>
+
+    <h1 id="quantityNumber">{{command.quantity}} </h1>
+
+    <!--boutton plus-->
+    <button id="circleButtonPlus" (click)="updateCommand(1)">+</button>
+
+  </div>
+
+</section>
+
+
+
+      <!--le bloc des prochains jours de la semaine-->
+
+
+      <div id="bloc" >
+        <button (click)="buildWeek()" ><<</button>
+        <button id="weekDayButton" *ngFor="let date of datesOfTheWeek" [routerLink]="['../',date]" >
+
+          {{displayThreeCharacterDay(date)}}{{displayDateDayMonth(date)}}
+
+        </button>
+
+        <button (click)="getNextWeek()">>></button>
+      </div>
+
+
+

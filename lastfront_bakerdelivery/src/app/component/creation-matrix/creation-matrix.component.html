@@ -1,0 +1,249 @@
+
+
+<h3>Les matrices de la semaine </h3>
+
+
+<tr id="title">
+<td>start date</td>
+
+<td>jour de livraison</td>
+<td>quantité</td>
+</tr>
+
+<tr *ngFor="let matrix of matrixList">
+
+
+  <td>{{matrix.startDate| date:'dd-MM-yyyy'}} </td>
+  <td>{{setDayOfTheWeek(matrix.day)}}</td>
+  <td>
+  <button (click)="addQuantity(matrix,  -1)" >-</button>
+  {{matrix.quantity}}
+    <button (click)="addQuantity(matrix,1)">+</button>
+  </td>
+
+
+
+
+  <label>
+   à partir de :
+    <input type="date" [formControl]="startDateForm">
+  </label>
+
+
+  <div class="button">
+    <button (click)="createMatrix(startDateForm.value,matrix)" >Soumettre la nouvelle matrix</button>
+  </div>
+
+</tr>
+
+
+
+
+
+
+
+
+<!--
+<h3>Les futures matrices </h3>
+
+<form [formGroup]="matrixForm" >
+
+  <tr >
+    <td>start date</td>
+    <td>end date </td>
+    <td>jour de livraison</td>
+    <td>quantité</td>
+  </tr>
+
+  <tr *ngFor="let matrix of futurMatrixList">
+
+
+    <td>{{matrix.startDate}}</td>
+    <td>{{matrix.endDate}}</td>
+    <td>{{setDayOfTheWeek(matrix.day)}}</td>
+    <td>
+      <button (click)="addQuantity(matrix, matrix.startDate, -1)" >-</button>
+      {{matrix.quantity}}
+      <button (click)="addQuantity(matrix, matrix.startDate,1)">+</button>
+    </td>
+
+
+  </tr>
+</form>
+-->
+
+
+<!--
+
+
+<form [formGroup]="managementForm" (ngSubmit)="onAction(managementForm.value)">
+
+  <div class="management-form">
+
+    <h2 class="item-form-title">Qui qui organise ?</h2>
+    <div class="management-form-elt" >
+      <label for="pseudo">Pseudo (*): </label>
+      <input  type="text"
+              formControlName="pseudo"
+              id="pseudo"
+              size="15"
+              placeholder="exemple : bob22"
+              [ngClass]="{'error-effect':managementForm.get('pseudo').errors && (managementForm.get('pseudo').touched || managementForm.get('pseudo').dirty)}"
+      >
+    </div>
+    <div *ngIf="((managementForm.get('pseudo').errors && (managementForm.get('pseudo').touched || managementForm.get('pseudo').dirty))
+    || (isSubmitted && managementForm.get('pseudo').errors))">
+      <div *ngIf="managementForm.get('pseudo').errors.required" class="error-effect-title">
+        Bonjour, qui êtes vous ?
+      </div>
+    </div>
+
+
+
+    <div class="management-form-elt">
+      <label for="email">Email (*): </label>
+      <input  type="email"
+              formControlName="email"
+              id="email"
+              placeholder="exemple : bob@gmail.com"
+              [ngClass]="{'error-effect':managementForm.get('email').errors && (managementForm.get('email').touched || managementForm.get('email').dirty)}"
+      >
+    </div>
+    <div *ngIf="((managementForm.get('email').errors && (managementForm.get('email').touched || managementForm.get('email').dirty))
+                  || (isSubmitted && managementForm.get('email').errors))">
+      <div *ngIf="managementForm.get('email').errors.required" class="error-effect-title">
+        Tout comme vous je hais les spams
+      </div>
+      <div *ngIf="managementForm.get('email').errors.email" class="error-effect-title">
+        Il manque peut être un @...ou alors peut être un "." ?
+      </div>
+    </div>
+
+    <h2 class="item-form-title">Coté pratique</h2>
+    <div class="management-form-elt">
+      <label for="description">Description de l'événement: </label>
+      <textarea   id="description"
+                  formControlName="description"
+                  rows="5"
+                  cols="33"
+                  placeholder="Description de l'événement">
+    </textarea>
+    </div>
+
+    <div class="management-form-elt">
+      <label for="event-time">Date et heure de l'événement (*): </label>
+      <input  type="datetime-local"
+              id="event-time"
+              formControlName="date"
+              [ngClass]="{'error-effect':managementForm.get('date').errors && (managementForm.get('date').touched || managementForm.get('date').dirty)}"
+      >
+    </div>
+    <div *ngIf="((managementForm.get('date').errors && (managementForm.get('date').touched || managementForm.get('date').dirty))
+                  || (isSubmitted && managementForm.get('date').errors))">
+      <div *ngIf="managementForm.get('date').errors.required" class="error-effect-title">
+        "Toute cette circulation va me mettre en retard !"
+      </div>
+    </div>
+
+
+    <h2 class="item-form-title">On se retrouve où ?</h2>
+    <div class="management-form-elt">
+      <label for="label">Intitulé du lieu (*): </label>
+      <input  type="text"
+              formControlName="label"
+              id="label"
+              placeholder="exemple : devant la tour Eiffel"
+              [ngClass]="{'error-effect':managementForm.get('label').errors && (managementForm.get('label').touched || managementForm.get('label').dirty)}"
+      >
+    </div>
+    <div *ngIf="((managementForm.get('label').errors && (managementForm.get('label').touched || managementForm.get('label').dirty))
+                || (isSubmitted && managementForm.get('label').errors))">
+      <div *ngIf="managementForm.get('label').errors.required" class="error-effect-title">
+        un indice du lieu de l'activité ?
+      </div>
+    </div>
+
+    <div class="management-form-elt">
+      <label for="street-nb">Numéro de rue: </label>
+      <input  type="text"
+              formControlName="streetNumber"
+              size="4"
+              maxlength="5"
+              id="street-nb">
+    </div>
+    <div *ngIf="((managementForm.get('streetNumber').errors && (managementForm.get('streetNumber').touched || managementForm.get('streetNumber').dirty))
+    || (isSubmitted && managementForm.get('streetNumber').errors))">
+      <div *ngIf="managementForm.get('streetNumber').errors.pattern" class="error-effect-title">
+        "donne moi un 1, donne moi un 2, donne moi un nombre..."
+      </div>
+    </div>
+
+    <div class="management-form-elt">
+      <label for="street">Rue: </label>
+      <input  type="text"
+              formControlName="street"
+              id="street">
+    </div>
+
+
+    <div class="management-form-elt">
+      <label for="postal-code">Code postal: </label>
+      <input  type="text"
+              formControlName="postalCode"
+              id="postal-code"
+              size="4"
+              maxlength="5"
+              [ngClass]="{'error-effect':managementForm.get('postalCode').errors && (managementForm.get('postalCode').touched || managementForm.get('postalCode').dirty)}"
+      >
+    </div>
+    <div *ngIf="((managementForm.get('postalCode').errors && (managementForm.get('postalCode').touched || managementForm.get('postalCode').dirty))
+            || (isSubmitted && managementForm.get('postalCode').errors))">
+      <div *ngIf="managementForm.get('postalCode').errors.pattern" class="error-effect-title">
+        "donne moi un nombre entre 0 et 99999 ..."
+      </div>
+    </div>
+
+    <div class="management-form-elt">
+      <label for="city">Ville (*): </label>
+      <input  type="text"
+              formControlName="city"
+              id="city"
+              [ngClass]="{'error-effect':managementForm.get('city').errors && (managementForm.get('city').touched || managementForm.get('city').dirty)}"
+      >
+    </div>
+    <div *ngIf="((managementForm.get('city').errors && (managementForm.get('city').touched || managementForm.get('city').dirty))
+                || (isSubmitted && managementForm.get('city').errors))">
+      <div *ngIf="managementForm.get('city').errors.required" class="error-effect-title">
+        "Je vous vois pas...vous êtes sur qu'on est dans la même ville ?"
+      </div>
+    </div>
+
+
+    <h2 class="item-form-title">Bon, c'est quoi le thème ?</h2>
+    <div class="management-form-elt">
+      <label for="category">Catégorie (*): </label>
+      <input  type="text"
+              formControlName="category"
+              id="category"
+              placeholder="exemple: musique"
+              [ngClass]="{'error-effect':managementForm.get('category').errors && (managementForm.get('category').touched || managementForm.get('category').dirty)}"
+      >
+    </div>
+    <div *ngIf="((managementForm.get('category').errors && (managementForm.get('category').touched || managementForm.get('category').dirty))
+                || (isSubmitted && managementForm.get('category').errors))">
+      <div *ngIf="managementForm.get('category').errors.required" class="error-effect-title">
+        Cinéma, musique, sport...
+      </div>
+    </div>
+
+
+    <div class="management-form-elt">
+      <button type="submit" id="submit-button">C'est parti !</button>
+    </div>
+
+
+  </div>
+
+
+</form>
+-->

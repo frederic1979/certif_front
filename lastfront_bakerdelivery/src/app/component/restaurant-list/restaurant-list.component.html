@@ -1,0 +1,74 @@
+
+<h3>Semaine N° {{id}}</h3>
+<h6>Du {{startUrl}} au {{endUrl}}</h6>
+
+<div class="container">
+
+
+  <table class="table table-striped table-condensed">
+
+
+    <thead >
+    <tr>
+      <th>Restaurant</th>
+      <th>{{startUrl}} </th>
+      <th>{{findOtherDayOfTheWeek(startUrl,1)}} </th>
+      <th>{{findOtherDayOfTheWeek(startUrl,2)}} </th>
+      <th>{{findOtherDayOfTheWeek(startUrl,3)}} </th>
+      <th>{{findOtherDayOfTheWeek(startUrl,4)}} </th>
+      <th>{{findOtherDayOfTheWeek(startUrl,5)}} </th>
+      <th>{{findOtherDayOfTheWeek(startUrl,6)}} </th>
+
+
+    </tr>
+    </thead>
+
+    <tbody>
+
+
+
+
+
+<tr *ngFor="let restaurant of restaurantList">
+
+
+  <td>{{restaurant.name}}</td>
+  <td><span
+    [ngStyle]="{'color': isCommandLivreeByRestaurantIdAndDate(restaurant.id, startUrl) ? 'green' : 'red'}">{{getCommandQuantityByRestaurantIdAndDate(restaurant.id, startUrl)}}
+    <button *ngIf="isAdmin" (click)="deleteCommandByRestaurantIdAndDate(restaurant.id, startUrl)">x</button> </span></td>
+  <td><span
+    [ngStyle]="{'color': isCommandLivreeByRestaurantIdAndDate(restaurant.id, findOtherDayOfTheWeek(startUrl,1)) ? 'green' : 'red'}">{{getCommandQuantityByRestaurantIdAndDate(restaurant.id, findOtherDayOfTheWeek(startUrl, 1))}}
+    <button *ngIf="isAdmin" (click)="deleteCommandByRestaurantIdAndDate(restaurant.id, findOtherDayOfTheWeek(startUrl, 1))">x</button></span>
+  </td>
+  <td><span
+    [ngStyle]="{'color': isCommandLivreeByRestaurantIdAndDate(restaurant.id, findOtherDayOfTheWeek(startUrl,2)) ? 'green' : 'red'}">{{getCommandQuantityByRestaurantIdAndDate(restaurant.id, findOtherDayOfTheWeek(startUrl, 2))}}
+    <button *ngIf="isAdmin" (click)="deleteCommandByRestaurantIdAndDate(restaurant.id, findOtherDayOfTheWeek(startUrl, 2))">x</button></span>
+  </td>
+  <td><span
+    [ngStyle]="{'color': isCommandLivreeByRestaurantIdAndDate(restaurant.id, findOtherDayOfTheWeek(startUrl,3)) ? 'green' : 'red'}">{{getCommandQuantityByRestaurantIdAndDate(restaurant.id, findOtherDayOfTheWeek(startUrl, 3))}}
+    <button *ngIf="isAdmin" (click)="deleteCommandByRestaurantIdAndDate(restaurant.id, findOtherDayOfTheWeek(startUrl, 3))">x</button></span>
+  </td>
+  <td><span
+    [ngStyle]="{'color': isCommandLivreeByRestaurantIdAndDate(restaurant.id, findOtherDayOfTheWeek(startUrl,4)) ? 'green' : 'red'}">{{getCommandQuantityByRestaurantIdAndDate(restaurant.id, findOtherDayOfTheWeek(startUrl, 4))}}
+    <button *ngIf="isAdmin" (click)="deleteCommandByRestaurantIdAndDate(restaurant.id, findOtherDayOfTheWeek(startUrl, 4))">x</button></span>
+  </td>
+  <td><span
+    [ngStyle]="{'color': isCommandLivreeByRestaurantIdAndDate(restaurant.id, findOtherDayOfTheWeek(startUrl,5)) ? 'green' : 'red'}">{{getCommandQuantityByRestaurantIdAndDate(restaurant.id, findOtherDayOfTheWeek(startUrl, 5))}}
+    <button *ngIf="isAdmin" (click)="deleteCommandByRestaurantIdAndDate(restaurant.id, findOtherDayOfTheWeek(startUrl, 5))">x</button></span>
+  </td>
+  <td><span
+    [ngStyle]="{'color': isCommandLivreeByRestaurantIdAndDate(restaurant.id, findOtherDayOfTheWeek(startUrl,6)) ? 'green' : 'red'}">{{getCommandQuantityByRestaurantIdAndDate(restaurant.id, findOtherDayOfTheWeek(startUrl, 6))}}
+    <button *ngIf="isAdmin" (click)="deleteCommandByRestaurantIdAndDate(restaurant.id, findOtherDayOfTheWeek(startUrl, 6))">x</button></span>
+  </td>
+
+
+</tr>
+
+
+    </tbody>
+
+
+  </table>
+
+
+</div>

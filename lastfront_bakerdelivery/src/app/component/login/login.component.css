@@ -1,0 +1,28 @@
+form {
+  width: 300px;
+  text-align: center;
+  margin: 50px auto;
+}
+
+.login-card {
+  min-width: 120px;
+}
+
+.mat-radio-button {
+  display: block;
+  margin: 5px 0;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.col:last-child {
+  margin-right: 0;
+}

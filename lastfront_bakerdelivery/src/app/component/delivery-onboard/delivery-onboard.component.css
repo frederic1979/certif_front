@@ -1,0 +1,28 @@
+table{
+  color: #3d3d3d;
+  background-color: whitesmoke;
+
+}
+
+td {
+  border: solid;
+  border-width:1px;
+
+}
+
+#validButton{
+  background-color: forestgreen;
+  color: white;
+}
+
+
+#cancelButton{
+
+  background-color: red;
+  color: white;
+}
+
+#title{
+  color: black;
+  border: solid;
+}

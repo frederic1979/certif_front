@@ -1,0 +1,25 @@
+
+footer {
+  flex-shrink: 0;
+  position: fixed;
+  bottom: 0;
+  width: 99%;
+  background-color: white;
+}
+
+div {
+  height: 60px;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#logo_boulange {
+  height: 40px;
+  /*height: 2.4vw;*/
+  /*min-height: 1.8vw;*/
+  /*min-width: 8.44vw;*/
+}
+

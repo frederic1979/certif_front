@@ -1,0 +1,93 @@
+
+
+
+<div class="connect" [ngStyle]="{'background' : 'green'}" *ngIf="isLoggedIn">
+  Connecté
+</div>
+
+<div class="connect" [ngStyle]="{'background' : 'red'}"*ngIf="!isLoggedIn">
+  Déconnecté
+</div>
+
+
+
+<mat-sidenav-container class="sidenav-container">
+
+
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"  >
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+
+
+      <a *ngIf="!isLoggedIn" mat-list-item routerLink="login">Connexion</a>
+
+      <div *ngIf="isLoggedIn" class="deroulant">
+        <a style="text-decoration:none" [routerLink]="['onboard', todayDate]" >
+          <button class="button_connexion" type="submit">Tournée du jour</button>
+        </a>
+      </div>
+
+      <li *ngIf="isLoggedIn" class="deroulant">
+            <a (click)=getWeekList() >Stock</a>
+            <ul class="sous" >
+              <li *ngFor="let week of weekList" >
+                <a [routerLink]="['/restaurants/week',week.id,week.start,week.end]" > Semaine n°{{ week.id }} </a>
+              </li>
+            </ul>
+          </li>
+
+
+
+
+
+
+      <li class="deroulant" *ngIf="isAdmin" class="deroulant">
+        <a (click)=getRestaurantList() > Matrice </a>
+        <ul class="sous" >
+          <li *ngFor="let restaurant of restaurantList" >
+            <a  [routerLink]="['matrix/restaurant',restaurant.id]" > {{ restaurant.name }} </a>
+          </li>
+        </ul>
+      </li>
+
+
+      <li *ngIf="isLoggedIn" class="deroulant">
+        <a (click)=getRestaurantList()>Choix Restaurant &ensp;</a>
+        <ul class="sous">
+          <li *ngFor="let restaurant of restaurantList">
+            <a [routerLink]="['restaurants/compteur',restaurant.id,tomorrow]"> {{ restaurant.name }} </a>
+        </ul>
+      </li>
+
+
+        <a *ngIf="isLoggedIn" mat-list-item (click)="logOut()">Déconnexion</a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+
+
+  <mat-sidenav-content>
+
+
+
+    <mat-toolbar color="primary">
+
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button
+        (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+
+      <span>Application pour la Gestion de Livraisons</span>
+    </mat-toolbar>
+
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+
+
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+

@@ -1,0 +1,226 @@
+
+
+
+
+/* Taille mobile < 450px de large */
+@media screen and (max-width: 450px) {
+  .clap_boulange {
+    display: none;
+  }
+  .Title {
+    margin: 0 auto;
+    text-align: left;
+  }
+}
+
+
+
+
+#stock{
+  display: flex;
+
+}
+
+.Title {
+  padding: 6vw 0;
+  width: 41.21vw;
+}
+
+
+div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  width: auto;
+  background-color: whitesmoke;
+
+
+}
+
+h1 {
+  font-family: MovieStack_Font, serif;
+  font-size: larger;
+}
+
+app-top-bar {
+
+  position: sticky;
+  flex: 1;
+}
+
+div div {
+  height: 35px;
+  font-size: large;
+  background: none;
+  margin: 0 10px;
+}
+
+.clap_boulange {
+  height: 200px;
+
+
+}
+
+.welcome_Page_button {
+
+  background: none;
+border: none;
+
+
+}
+
+a .button_connexion {
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+}
+
+.button_connexion {
+  height: 35px;
+  font-size: large;
+  padding: 0 15px;
+  border-color: white;
+  background-color: #3d3d3d;
+}
+
+
+/**
+ * ZOOM IMAGE EFFECT ON HOVER // wpRock.fr
+ */
+.wprock-img-zoom-hover .wprock-img-zoom {
+  overflow: hidden;
+  position: relative;
+  height: 80px;
+
+}
+.wprock-img-zoom-hover .wprock-img-zoom img {
+  max-width: 120%;
+  -moz-transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+}
+.wprock-img-zoom-hover .wprock-img-zoom * {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.wprock-img-zoom-hover:hover .wprock-img-zoom img {
+  -moz-transform: scale(1.06);
+  -webkit-transform: scale(1.06);
+  transform: scale(1.06);
+}
+
+
+
+/* Coix déroulant d'utilisateur*/
+#user_choice_nav {
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+#user_choice ul {
+  list-style-type: none;
+  padding: 0 50px 0 0;
+}
+
+#user_choice ul .deroulant {
+  flex: 1 1 auto;
+  text-align: center;
+  position: relative;
+}
+
+#user_choice a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  background-color: #3d3d3d;
+  border-bottom: 2px solid transparent;
+  border-radius: 3px;
+  padding: 10px 15px;
+}
+
+#user_choice a:hover {
+  color: white;
+  border-bottom: 2px solid lightgrey;
+}
+
+.sous {
+  display: none;
+  /*box-shadow: 0px 1px 2px #CCC;*/
+  background-color: white;
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+}
+
+#user_choice > ul .deroulant:hover .sous {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.sous li {
+  flex: 1 1 auto;
+  text-align: left;
+}
+
+.sous a {
+  padding: 10px;
+  border-bottom: none;
+}
+
+.sous a:hover {
+  border-bottom: none;
+  background-color: RGBa(200,200,200,0.1);
+}
+
+.deroulant > a::after {
+  content:" ▼";
+  font-size: 12px;
+}
+
+
+@media screen and (max-width: 2560px) {
+  #what_for {
+    margin-top: 190px;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  #what_for {
+    margin-top: 150px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #what_for {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  #title {
+    font-size: smaller;
+  }
+
+  #what_for {
+    margin-top: 230px;
+    font-size: smaller;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  #title {
+    font-size: x-small;
+  }
+
+  #what_for {
+    margin-top: 190px;
+    font-size: smaller;
+  }
+}

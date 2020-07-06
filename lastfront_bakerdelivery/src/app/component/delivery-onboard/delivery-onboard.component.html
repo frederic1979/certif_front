@@ -1,0 +1,38 @@
+
+<table>
+
+  <h3>{{setDayOfTheWeek(dateUrlFormatDate)}}</h3>
+
+<tr id="title">
+  <th>Restaurant</th>
+  <th>Quantité</th>
+  <th>Etat</th>
+  <th>Status</th>
+
+
+</tr>
+
+
+  <tr  *ngFor="let command of commandsOfTheDayAtt" >
+
+
+    <td>{{displayNameOfRestaurantId(command.restaurantId)}}</td>
+    <button [routerLink]="['../../restaurants/compteur',command.restaurantId,command.date]">{{command.quantity}}</button>
+    <td >{{command.etat}}</td>
+    <button (click)="updateCommandDelivery(command, command.id)">OK</button>
+
+
+  </tr>
+
+
+  <tr id="validButton"*ngFor="let command of commandsOfTheDayLivree" >
+
+
+    <td>{{displayNameOfRestaurantId(command.restaurantId)}}</td>
+    <td>{{command.quantity}}</td>
+    <td>{{command.etat}}</td>
+    <button (click)="cancelCommandDelivery(command)">Annuler</button>
+  </tr>
+
+
+</table>

@@ -1,0 +1,41 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.content {
+  margin: 20px;
+}
+
+.connect{
+  color: whitesmoke;
+  width: 80px;
+  margin-left: 92%;
+
+}
+
+nav ul{height:200px; width:18%;}
+nav ul{overflow:hidden; overflow-y:scroll;}
+
+@media screen and (max-width: 450px) {
+  mat-toolbar {
+    display: none;
+
+  }
+  .connect{
+    display: none;
+  }
+}
